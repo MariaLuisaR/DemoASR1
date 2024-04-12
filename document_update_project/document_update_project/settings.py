@@ -10,11 +10,12 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
+import os
 from pathlib import Path
+from google.oauth2 import service_account
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
@@ -24,6 +25,18 @@ SECRET_KEY = 'django-insecure-uk8!$v%i6i$@pza81^7wcsd#8*!@8n%hup&-fbe%*+lolh_x)b
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+
+# Set "media" folder
+DEFAULT_FILE_STORAGE = 'document_update_project.gcsUtils.Media'
+
+GS_BUCKET_NAME = 'demo-solicitudes-banco-de-los-alpes'
+
+# Add an unique ID to a file name if same file name exists
+GS_FILE_OVERWRITE = False
+
+GS_CREDENTIALS = service_account.Credentials.from_service_account_file(
+    os.path.join(BASE_DIR, 'gcpCredentials.json'),
+)
 
 ALLOWED_HOSTS = []
 
