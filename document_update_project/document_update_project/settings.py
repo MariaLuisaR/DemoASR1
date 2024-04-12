@@ -32,13 +32,13 @@ DEFAULT_FILE_STORAGE = 'document_update_project.gcsUtils.Media'
 GS_BUCKET_NAME = 'demo-solicitudes-banco-de-los-alpes'
 
 # Add an unique ID to a file name if same file name exists
-GS_FILE_OVERWRITE = False
+GS_FILE_OVERWRITE = True
 
 GS_CREDENTIALS = service_account.Credentials.from_service_account_file(
     os.path.join(BASE_DIR, 'gcpCredentials.json'),
 )
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
